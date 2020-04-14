@@ -1,2 +1,2 @@
 CREATE SEQUENCE HIBERNATE_SEQUENCE START WITH 100 INCREMENT BY 1;
-CREATE TABLE user ( id Integer PRIMARY KEY, fullname VARCHAR(200), username VARCHAR(20), password_hash VARCHAR(256), last_update TIMESTAMP);
+CREATE TABLE user ( id Integer PRIMARY KEY, mail VARCHAR(20), password_hash VARCHAR(256), fullname VARCHAR(200), age Integer, phone_number VARCHAR(20), last_update TIMESTAMP);

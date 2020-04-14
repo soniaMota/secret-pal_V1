@@ -52,6 +52,25 @@ public class JpaUserEntity {
     this.lastUpdate = now();
   }
 
+  //AÑADIDO POR MI PORQUE LA CLASE JpaUserRepository DABA FALLOS
+  public void setName(String name) {
+    this.name = name;
+  }
 
+  public void setMail(String mail) {
+    this.mail = mail;
+  }
+
+  public void setAge(Integer age) {
+    this.age = age;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public void setPasswordHash(String passwordHash) {
+    this.passwordHash = passwordHash;
+  }
 }
 
