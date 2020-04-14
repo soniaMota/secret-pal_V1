@@ -1,6 +1,4 @@
-INSERT INTO user VALUES (1, 'Graham Chapman', 'chapman', '5f4dcc3b5aa765d61d8327deb882cf99', now);
-INSERT INTO user VALUES (2, 'John Cleese', 'gleese', '5f4dcc3b5aa765d61d8327deb882cf99', now);
-INSERT INTO user VALUES (3, 'Terry Gilliam', 'gilliam', '5f4dcc3b5aa765d61d8327deb882cf99', now);
-INSERT INTO user VALUES (4, 'Eric Idle', 'idle', '5f4dcc3b5aa765d61d8327deb882cf99', now);
-INSERT INTO user VALUES (5, 'Terry Jones', 'jones', '5f4dcc3b5aa765d61d8327deb882cf99', now);
-INSERT INTO user VALUES (6, 'Michael Palin', 'palin', '5f4dcc3b5aa765d61d8327deb882cf99', now);
+INSERT INTO user VALUES (1, 'soniamywigo@gmail.com', 'd31cb1e2b7902e8e9b4d1793e94c38a0', 'Sonia Mota Díaz', 52, '606986222', now());
+INSERT INTO user VALUES (2, 'pedropanama25@gmail.com', 'c6cc8094c2dc07b700ffcc36d64e2138', 'Pedro Martínez García', 55, '678348754', now());
+INSERT INTO user VALUES (3, 's.mota.diaz@iescristobaldemonroy.es', 'f8a250a2015678ac54fbba972dde0ecc', 'Sonia Mota Díaz', 50, '955682675', now());
+
