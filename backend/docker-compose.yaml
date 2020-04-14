@@ -1,0 +1,29 @@
+version: "3"
+services:
+    db:
+        build: ./db
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - DB_NAME=secret-pal
+            - DB_USER=pal
+            - DB_PASS=secret
+    web:
+        build: ./service
+        ports:
+            - 8080:8080
+        depends_on:
+            - db
+        environment:
+            - DB_NAME=secret-pal
+            - DB_USER=pal
+            - DB_PASS=secret
+    mail:
+        image: bytemark/smtp
+        environment:
+          RELAY_HOST: smtp.example.com
+          RELAY_PORT: 587
+          RELAY_USERNAME: secret-pal@email.com
+          RELAY_PASSWORD: secret-pal@password
+

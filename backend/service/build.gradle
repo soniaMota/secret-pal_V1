@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2')
+    }
+}
+
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.12'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.2'
+    implementation 'commons-codec:commons-codec:1.14'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    testImplementation 'org.mockito:mockito-core:3.3.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.3.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    providedCompile 'javax:javaee-api:7.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+}
+
+group = 'com.secret-pal'
+version = '1.0-SNAPSHOT'
