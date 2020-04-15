@@ -2,6 +2,7 @@ package com.secretpal.infrastructure.rest.config;
 
 import com.secretpal.infrastructure.rest.GroupApi;
 import com.secretpal.infrastructure.rest.UserApi;
+import com.secretpal.infrastructure.rest.config.exception.DuplicatedGroupExceptionMapper;
 import com.secretpal.infrastructure.rest.config.exception.DuplicatedUserExceptionMapper;
 import com.secretpal.infrastructure.rest.config.exception.ValidationExceptionMapper;
 
@@ -20,6 +21,7 @@ public class Api extends Application {
         ObjectMapperProvider.class,
         CorsFilter.class,
         DuplicatedUserExceptionMapper.class,
+            DuplicatedGroupExceptionMapper.class,
         ValidationExceptionMapper.class);
   }
 }
