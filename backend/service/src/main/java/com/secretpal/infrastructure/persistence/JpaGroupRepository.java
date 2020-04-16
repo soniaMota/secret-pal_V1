@@ -9,7 +9,10 @@ import java.util.stream.Collectors;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+
+import static java.util.stream.Collectors.toList;
 
 @Stateless
 public class JpaGroupRepository implements GroupRepository {
@@ -29,15 +32,18 @@ public class JpaGroupRepository implements GroupRepository {
 
     @Override
     public Optional<Group> findByName(String name) {
-
-        return Optional.of(toModel(manager.createNamedQuery("findByName", JpaGroupEntity.class)
-                .setParameter("name", name).getSingleResult()));
+        try {
+            return Optional.of(toModel(manager.createNamedQuery("findByName", JpaGroupEntity.class)
+                    .setParameter("name", name).getSingleResult()));
+        } catch (NoResultException e){
+            return Optional.empty();
+        }
     }
 
     @Override
     public List<Group> allGroups() {
         return manager.createNamedQuery("findAllNameGroups", JpaGroupEntity.class).getResultList()
-                .stream().map(this::toModel).collect(Collectors.toList());
+                .stream().map(this::toModel).collect(toList());
     }
 
     private Group toModel(JpaGroupEntity entity) {

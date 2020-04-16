@@ -15,15 +15,15 @@ public class UserCommandService {
     this.userRepository = userRepository;
   }
 
-  public void registerUser(RegistrationCommand registrationCommand) {
-    if (isUsernameAvailable(registrationCommand.getMail())) {
+  public void registerUser(RegistrationCommandUser registrationCommandUser) {
+    if (isUsernameAvailable(registrationCommandUser.getMail())) {
       userRepository.createUser(User.builder()
-              .mail(registrationCommand.getMail())
-              .name(registrationCommand.getName())
-              .phone(registrationCommand.getPhone()).build(),
-          registrationCommand.getPassword());
+              .mail(registrationCommandUser.getMail())
+              .name(registrationCommandUser.getName())
+              .phone(registrationCommandUser.getPhone()).build(),
+          registrationCommandUser.getPassword());
     } else {
-      throw new DuplicatedUserMail(registrationCommand.getMail());
+      throw new DuplicatedUserMail(registrationCommandUser.getMail());
     }
   }
 

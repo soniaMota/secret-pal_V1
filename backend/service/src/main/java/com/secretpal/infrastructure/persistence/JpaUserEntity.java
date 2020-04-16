@@ -27,7 +27,8 @@ import static java.time.LocalDateTime.now;
 @Table(name = "user", schema = "public")
 @NamedQueries({
     @NamedQuery(name = "findAll", query = "select u from JpaUserEntity u"),
-    @NamedQuery(name = "findByMail", query = "select u from JpaUserEntity u where u.mail = :mail")})
+    @NamedQuery(name = "findByMail", query = "select u from JpaUserEntity u where u.mail = :mail"),
+    @NamedQuery(name = "findAllByNameAndAge", query = "select u.name, u.age from JpaUserEntity u")})
 public class JpaUserEntity {
 
   @Id
@@ -47,9 +48,9 @@ public class JpaUserEntity {
   @Column(name = "phone_number")
   private String phone;
 
-    @ManyToMany(mappedBy = "users")
-    @JoinTable(name = "user-group", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "group_id")})
-    List<Group> groups;
+  @ManyToMany(mappedBy = "users")
+  @JoinTable(name = "user-group", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "group_id")})
+  private List<Group> groups;
 
   @Column(name = "password_hash")
   private String passwordHash;

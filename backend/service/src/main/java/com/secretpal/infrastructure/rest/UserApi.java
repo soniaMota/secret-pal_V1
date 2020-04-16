@@ -1,6 +1,6 @@
 package com.secretpal.infrastructure.rest;
 
-import com.secretpal.application.RegistrationCommand;
+import com.secretpal.application.RegistrationCommandUser;
 import com.secretpal.application.UserCommandService;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -22,8 +22,8 @@ public class UserApi {
 
   @POST
   @Consumes("application/json")
-  public Response registerUser(RegistrationCommand registrationCommand) {
-    this.userCommandService.registerUser(registrationCommand);
+  public Response registerUser(RegistrationCommandUser registrationCommandUser) {
+    this.userCommandService.registerUser(registrationCommandUser);
     return Response.ok().build();
   }
 }
