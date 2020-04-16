@@ -1,4 +1,52 @@
 package com.secretpal.infrastructure.persistence;
 
-public class JpaGroupRepository {
+import com.secretpal.domain.model.Group;
+import com.secretpal.domain.service.GroupRepository;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@Stateless
+public class JpaGroupRepository implements GroupRepository {
+
+    @PersistenceContext(unitName = "backend")
+    EntityManager manager;
+
+    @Override
+    public void createGroup(Group group) {
+        var entity = new JpaGroupEntity();
+        entity.setName(group.getName());
+        entity.setUserAdmin(group.getUserAdmin());
+        entity.setUsers(group.getUsers());
+        entity.setEvents(group.getEvents());
+        manager.persist(entity);
+    }
+
+    @Override
+    public Optional<Group> findByName(String name) {
+
+        return Optional.of(toModel(manager.createNamedQuery("findByName", JpaGroupEntity.class)
+                .setParameter("name", name).getSingleResult()));
+    }
+
+    @Override
+    public List<Group> allGroups() {
+        return manager.createNamedQuery("findAllNameGroups", JpaGroupEntity.class).getResultList()
+                .stream().map(this::toModel).collect(Collectors.toList());
+    }
+
+    private Group toModel(JpaGroupEntity entity) {
+        return Group.builder()
+                .name(entity.getName())
+                .userAdmin(entity.getUserAdmin())
+                .users(entity.getUsers())
+                .events(entity.getEvents())
+                .build();
+    }
+
 }
