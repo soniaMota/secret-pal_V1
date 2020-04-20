@@ -12,4 +12,6 @@ public interface UserRepository {
   Optional<User> findByMail(String mail);
 
   List<User> allUsers();
+
+  List<User> allUsersByNameAndAge();
 }

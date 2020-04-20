@@ -9,7 +9,7 @@ import lombok.Value;
 @Builder
 public class Event {
     String name;
-    LocalDateTime date;
+    LocalDateTime dateTime;
     int budget;
     int childrenBudget;
     String place;

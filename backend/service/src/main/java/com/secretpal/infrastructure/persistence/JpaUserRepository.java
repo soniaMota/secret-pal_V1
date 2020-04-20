@@ -3,14 +3,15 @@ package com.secretpal.infrastructure.persistence;
 import com.secretpal.domain.model.User;
 import com.secretpal.domain.service.UserRepository;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import java.util.List;
+import java.util.Optional;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import java.util.List;
-import java.util.Optional;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.codec.digest.Md5Crypt;
 
 import static java.util.stream.Collectors.toList;
 
@@ -35,6 +36,12 @@ public class JpaUserRepository implements UserRepository {
     return manager.createNamedQuery("findAll", JpaUserEntity.class).getResultList()
         .stream().map(this::toModel).collect(toList());
   }
+
+    @Override
+    public List<User> allUsersByNameAndAge() {
+        return manager.createNamedQuery("findAllByNameAndAge", JpaUserEntity.class).getResultList()
+                .stream().map(this::toModel).collect(toList());
+    }
 
   @Override
   public Optional<User> findByMail(String mail) {
