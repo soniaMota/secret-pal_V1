@@ -1,4 +1,5 @@
 package com.secretpal.domain.model;
 
-public class Raffled {
+
+public class Raffle {
 }
