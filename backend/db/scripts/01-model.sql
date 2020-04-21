@@ -31,6 +31,7 @@ create table "event" (
 create table "raffle"
 (
 	id Integer PRIMARY KEY,
+    friend_1 varchar(45),
     assigned_friend varchar(45),
     event_id int,
     foreign key (event_id) references "event"(id)
