@@ -1,7 +1,8 @@
 
 CREATE SEQUENCE hibernate_sequence START 100;
 
-create table "user" (
+create table "user" 
+(
 	id Integer PRIMARY KEY,
     mail varchar(256) not null,
     password_hash varchar(256),
@@ -11,12 +12,14 @@ create table "user" (
     last_update timestamp not null
 );
 
-create table "group" (
+create table "group" 
+(
 	id Integer PRIMARY KEY,
     name varchar(45) not null
 );
 
-create table "event" (
+create table "event" 
+(
 	id Integer PRIMARY KEY,
     name varchar(45) not null,
     event_date timestamp not null,
